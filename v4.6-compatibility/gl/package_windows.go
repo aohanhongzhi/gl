@@ -7552,7 +7552,7 @@ func IsVertexAttribEnabledAPPLE(index uint32, pname uint32) bool {
 	return ret != 0
 }
 func LGPUCopyImageSubDataNVX(sourceGpu uint32, destinationGpuMask uint32, srcName uint32, srcTarget uint32, srcLevel int32, srcX int32, srxY int32, srcZ int32, dstName uint32, dstTarget uint32, dstLevel int32, dstX int32, dstY int32, dstZ int32, width int32, height int32, depth int32) {
-	panic("\"LGPUCopyImageSubDataNVX\" is not implemented")
+	syscall.Syscall18(gpLGPUCopyImageSubDataNVX, 17, uintptr(sourceGpu), uintptr(destinationGpuMask), uintptr(srcName), uintptr(srcTarget), uintptr(srcLevel), uintptr(srcX), uintptr(srxY), uintptr(srcZ), uintptr(dstName), uintptr(dstTarget), uintptr(dstLevel), uintptr(dstX), uintptr(dstY), uintptr(dstZ), uintptr(width), uintptr(height), uintptr(depth), 0)
 }
 func LGPUInterlockNVX() {
 	syscall.Syscall(gpLGPUInterlockNVX, 0, 0, 0, 0)
@@ -8453,7 +8453,7 @@ func MulticastCopyBufferSubDataNV(readGpu uint32, writeGpuMask uint32, readBuffe
 	syscall.Syscall9(gpMulticastCopyBufferSubDataNV, 7, uintptr(readGpu), uintptr(writeGpuMask), uintptr(readBuffer), uintptr(writeBuffer), uintptr(readOffset), uintptr(writeOffset), uintptr(size), 0, 0)
 }
 func MulticastCopyImageSubDataNV(srcGpu uint32, dstGpuMask uint32, srcName uint32, srcTarget uint32, srcLevel int32, srcX int32, srcY int32, srcZ int32, dstName uint32, dstTarget uint32, dstLevel int32, dstX int32, dstY int32, dstZ int32, srcWidth int32, srcHeight int32, srcDepth int32) {
-	panic("\"MulticastCopyImageSubDataNV\" is not implemented")
+	syscall.Syscall18(gpMulticastCopyImageSubDataNV, 17, uintptr(srcGpu), uintptr(dstGpuMask), uintptr(srcName), uintptr(srcTarget), uintptr(srcLevel), uintptr(srcX), uintptr(srcY), uintptr(srcZ), uintptr(dstName), uintptr(dstTarget), uintptr(dstLevel), uintptr(dstX), uintptr(dstY), uintptr(dstZ), uintptr(srcWidth), uintptr(srcHeight), uintptr(srcDepth), 0)
 }
 func MulticastFramebufferSampleLocationsfvNV(gpu uint32, framebuffer uint32, start uint32, count int32, v *float32) {
 	syscall.Syscall6(gpMulticastFramebufferSampleLocationsfvNV, 5, uintptr(gpu), uintptr(framebuffer), uintptr(start), uintptr(count), uintptr(unsafe.Pointer(v)), 0)
