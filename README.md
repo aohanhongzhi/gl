@@ -1,6 +1,10 @@
-# gl [![Build Status](https://travis-ci.org/go-gl/gl.svg?branch=master)](https://travis-ci.org/go-gl/gl) [![GoDoc](https://godoc.org/github.com/go-gl/gl?status.svg)](https://godoc.org/github.com/go-gl/gl)
+# gl [![Build Status](https://travis-ci.org/neclepsio/gl.svg?branch=master)](https://travis-ci.org/neclepsio/gl) [![GoDoc](https://godoc.org/github.com/neclepsio/gl?status.svg)](https://godoc.org/github.com/neclepsio/gl)
 
-This repository holds Go bindings to various OpenGL versions. They are auto-generated using [Glow](https://github.com/go-gl/glow).
+This repository holds Go bindings to various OpenGL versions. They are auto-generated using my fork of [Glow](https://github.com/neclepsio/glow).
+
+The difference from [go-gl](https://github.com/go-gl/gl) are:
+- WithOffset variants for some functions, so you don't have to pass pointers insteas of offsets (closes go-gl/gl issues [80](https://github.com/go-gl/gl/issues/80) and [124](https://github.com/go-gl/gl/issues/124)). Currently only functions `glDrawElements`, `glVertexAttribPointer`, `glGetVertexAttribPointerv` provide variants: let me know if you need more.
+- No need to use cgo under Windows (much faster build times).
 
 Features:
 - Go functions that mirror the C specification using Go types.
@@ -8,7 +12,7 @@ Features:
 - Support for extensions (including debug callbacks).
 
 Requirements:
-- A cgo compiler (typically gcc).
+- A cgo compiler (typically gcc), only for non-Windows OS.
 - On Ubuntu/Debian-based systems, the `libgl1-mesa-dev` package.
 
 Usage
@@ -16,14 +20,14 @@ Usage
 
 Use `go get -u` to download and install the prebuilt packages. The prebuilt packages support OpenGL versions 2.1, 3.1, 3.2, 3.3, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6 across both the core and compatibility profiles and include all extensions. Pick whichever one(s) you need:
 
-    go get -u github.com/go-gl/gl/v{3.2,3.3,4.1,4.2,4.3,4.4,4.5,4.6}-{core,compatibility}/gl
-    go get -u github.com/go-gl/gl/v3.1/gles2
-    go get -u github.com/go-gl/gl/v2.1/gl
+    go get -u github.com/neclepsio/gl/v{3.2,3.3,4.1,4.2,4.3,4.4,4.5,4.6}-{core,compatibility}/gl
+    go get -u github.com/neclepsio/gl/v3.1/gles2
+    go get -u github.com/neclepsio/gl/v2.1/gl
 
 Once the bindings are installed you can use them with the appropriate import statements.
 
 ```Go
-import "github.com/go-gl/gl/v3.3-core/gl"
+import "github.com/neclepsio/gl/v3.3-core/gl"
 
 func main() {
 	window := ... // Open a window.
@@ -54,12 +58,12 @@ The `procaddr` package contains platform-specific functions for [loading OpenGL 
 Generating
 ----------
 
-These gl bindings are generated using the [Glow](https://github.com/go-gl/glow) generator. Only developers of this repository need to do this step.
+These gl bindings are generated using the [Glow](https://github.com/neclepsio/glow) generator. Only developers of this repository need to do this step.
 
-It is required to have `glow` source in the same Go workspace (since relative paths are used) and the `glow` binary should be in your `$PATH`. Doable with `go get -u github.com/go-gl/glow` if your `$GOPATH/bin` is in your `$PATH`.
+It is required to have `glow` source in the same Go workspace (since relative paths are used) and the `glow` binary should be in your `$PATH`. Doable with `go get -u github.com/neclepsio/glow` if your `$GOPATH/bin` is in your `$PATH`.
 
 ```bash
-go generate -tags=gen github.com/go-gl/gl
+go generate -tags=gen github.com/neclepsio/gl
 ```
 
-More information about these bindings can be found in the [Glow repository](https://github.com/go-gl/glow).
+More information about these bindings can be found in the [Glow repository](https://github.com/neclepsio/glow).
