@@ -4,7 +4,7 @@ This repository holds Go bindings to various OpenGL versions. They are auto-gene
 
 The difference from [go-gl](https://github.com/go-gl/gl) are:
 - WithOffset variants for some functions, so you don't have to pass pointers insteas of offsets (closes go-gl/gl issues [80](https://github.com/go-gl/gl/issues/80) and [124](https://github.com/go-gl/gl/issues/124)). Currently only functions `glDrawElements`, `glVertexAttribPointer`, `glGetVertexAttribPointerv` provide variants: let me know if you need more.
-- No need to use cgo under Windows (much faster build times). It requires Go 1.12.
+- No need to use cgo under Windows (much faster build times). It requires Go 1.12 for compatibilty profiles.
 
 Features:
 - Go functions that mirror the C specification using Go types.
